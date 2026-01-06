@@ -19,7 +19,7 @@ test.describe('DISHIO Sign In Scenarios', () => {
     });
 
     await test.step('Verify successful navigation', async () => {
-      // Typically you check for a dashboard URL or element
+      // Typically check for a dashboard URL or element
       await expect(page).toHaveURL('https://dishio-admin-staging.vercel.app/dashboard/brandmanager'); 
     });
   });
@@ -30,8 +30,7 @@ test.describe('DISHIO Sign In Scenarios', () => {
     });
 
     await test.step('Verify "Invalid Credentials" message appears', async () => {
-      // FIXED: Spelling corrected to match the UI
-      await expect(loginPage.invalidCredentialsToast).toBeVisible();
+       await expect(loginPage.invalidCredentialsToast).toBeVisible();
     });
   });
 

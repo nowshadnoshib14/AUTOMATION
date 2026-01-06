@@ -7,7 +7,7 @@ class LoginPage {
     this.signInButton = page.getByRole('button', { name: 'Sign In' });
     
     // Error messages
-    this.invalidCredentialsToast = page.getByText('Invalid Credentials'); // FIXED: Correct spelling
+    this.invalidCredentialsToast = page.getByText('Invalid Credentials');
     this.emailError = page.getByTestId('errorEmail');
     this.passwordError = page.getByTestId('errorPassword');
     
