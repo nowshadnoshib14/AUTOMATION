@@ -7,7 +7,7 @@ class LoginPage {
     this.signInButton = page.getByRole('button', { name: 'Sign In' });
     
     // Error messages
-    this.invalidCredentialsToast = page.getByText('Invalid Credentials');
+    this.invalidCredentialsToast = page.getByText('Invalid Credentials'); 
     this.emailError = page.getByTestId('errorEmail');
     this.passwordError = page.getByTestId('errorPassword');
     
@@ -16,22 +16,18 @@ class LoginPage {
     
     // Links
     this.forgotPasswordLink = page.getByText('Forgot password?');
-    this.supportLink = page.getByText('support@dish.io');
+    this.supportLink = page.locator('a[href^="mailto:support@dish.io"]');
   }
 
   async navigate() {
     await this.page.goto('https://dishio-admin-staging.vercel.app/signin', { waitUntil: 'networkidle' });
   }
 
- async login(email, password) {
-  if (email) await this.emailInput.fill(email);
-  if (password) await this.passwordInput.fill(password);
-  
-  await this.signInButton.click();
-  
-  // This ensures the function doesn't finish until the URL contains 'dashboard'
-//   await this.page.waitForURL(/.*dashboard/, { waitUntil: 'load' });
-}
+  async login(email, password) {
+    if (email) await this.emailInput.fill(email);
+    if (password) await this.passwordInput.fill(password);
+    await this.signInButton.click();
+  }
 
   async togglePasswordVisibility() {
     await this.passwordToggle.click();
