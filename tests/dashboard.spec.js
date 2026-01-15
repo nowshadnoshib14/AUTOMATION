@@ -12,7 +12,7 @@ test.describe('DISHIO Dashboard and Account Menu Scenarios', () => {
         newbrand = new NewBrandWindow(page);
         await loginPage.navigate();
         await page.getByRole('button', { name: 'Accept' }).click();
-        await loginPage.login('testerbd365@gmail.com', 'A@12345b');
+        await loginPage.login('', '');
         // await expect(page).toHaveURL('https://dishio-admin-staging.vercel.app/dashboard/brandlist', { timeout: 10000 });
     });
     // test.only('TC_83: Verify Brand Manager Page ', async ({ page }) => {
