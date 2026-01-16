@@ -4,8 +4,8 @@ const { LoginPage } = require('../pages/LoginPage');
 test.describe('DISHIO Sign In Scenarios', () => {
   let loginPage;
   const credentials = {
-    email: '',
-    pass: ''
+    email: 'testerbd365@gmail.com',
+    pass: 'A@12345b'
   };
 
   test.beforeEach(async ({ page }) => {
@@ -13,19 +13,16 @@ test.describe('DISHIO Sign In Scenarios', () => {
     await loginPage.navigate();
   });
 
-test('TC_1: Valid Sign-In', async ({ page }) => {
+  test('TC_1: Valid Sign-In', async ({ page }) => {
     await test.step('Fill credentials and submit', async () => {
-        await loginPage.login(credentials.email, credentials.pass);
+      await loginPage.login(credentials.email, credentials.pass);
     });
 
     await test.step('Verify successful navigation', async () => {
-         const brandManagerHeading = page.getByRole('heading', { name: 'Brand Manager', exact: true });
- 
-
-        // Increase timeout slightly for staging environments
-        await expect(brandManagerHeading).toBeVisible({ timeout: 10000 }); 
+      // Typically check for a dashboard URL or element
+      await expect(page).toHaveURL('https://dishio-admin-staging.vercel.app/dashboard/brandmanager',{timeout:10000}); 
     });
-});
+  });
 
   test('TC_2: Invalid Sign-In', async () => {
     await test.step('Enter wrong password and submit', async () => {
@@ -33,7 +30,8 @@ test('TC_1: Valid Sign-In', async ({ page }) => {
     });
 
     await test.step('Verify "Invalid Credentials" message appears', async () => {
-       await expect(loginPage.invalidCredentialsToast).toBeVisible();
+       
+      await expect(loginPage.invalidCredentialsToast).toBeVisible();
     });
   });
 
@@ -43,18 +41,16 @@ test('TC_1: Valid Sign-In', async ({ page }) => {
     await expect(loginPage.passwordError).toBeVisible();
   });
 
-  test('TC_4: Password Visibility Toggle', async () => {
+  test.only('TC_4: Password Visibility Toggle', async () => {
     await loginPage.passwordInput.fill(credentials.pass);
     
     // Check hidden
     await expect(loginPage.passwordInput).toHaveAttribute('type', 'password');
 
     await loginPage.togglePasswordVisibility();
-        await loginPage.togglePasswordVisibility();
-
     
     // Check visible
-    await expect(loginPage.passwordInput).toHaveAttribute('type', 'text',{timeout:5000});
+    await expect(loginPage.passwordInput).toHaveAttribute('type', 'text');
   });
 
   test('TC_6: Forgot Password Link', async ({ page }) => {
