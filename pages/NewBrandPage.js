@@ -1,4 +1,4 @@
-class NewBrandWindow {
+class NewBrandPage {
     constructor(page) {
         this.page = page;
         this.newBrandButton = page.getByTestId('create-brand-button');
@@ -11,4 +11,4 @@ class NewBrandWindow {
     }
    
 }
-module.exports = { NewBrandWindow };
+module.exports = { NewBrandPage };
