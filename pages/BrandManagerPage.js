@@ -15,6 +15,17 @@ class BrandManagerPage {
         this.languageOption = page.getByText('Language');
         this.logoutOption = page.getByRole('button', { name: 'Log out' });
         this.brandSearch = page.getByRole('textbox', { name: 'Search' });
+
+        //Edit brand
+        this.editBrandButton = page.locator('div:nth-child(1) > .flex.h-\\[100px\\] > .flex.h-full > .cursor-pointer.text-2xl.iconify.iconify--tabler');
+        this.editPageValidator = page.getByRole('heading', { name: 'Performance', exact: true });
+        this.expandButton = page.locator('div:nth-child(1) > .flex.h-\\[100px\\] > .flex.h-full > .cursor-pointer.text-2xl.iconify.iconify--ep');
+        this.collapseButton = page.locator('div:nth-child(1) > .flex.h-\\[100px\\] > .flex.h-full > .cursor-pointer.text-2xl.iconify.iconify--ep');
+        this.expandValidation = page.getByRole('button', { name: 'Add Location' });
+
+
+
+
         //language
         this.eng = page.getByText('English');
         this.es = page.getByText('Español');
