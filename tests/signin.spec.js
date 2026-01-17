@@ -4,8 +4,8 @@ const { LoginPage } = require('../pages/LoginPage');
 test.describe('DISHIO Sign In Scenarios', () => {
   let loginPage;
   const credentials = {
-    email: 'testerbd365@gmail.com',
-    pass: 'A@12345b'
+    email: '',
+    pass: ''
   };
 
   test.beforeEach(async ({ page }) => {
